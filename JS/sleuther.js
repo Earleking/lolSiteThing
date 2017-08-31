@@ -1,5 +1,4 @@
 var idsToSearch = [];
-var endItems = [];
 function getDataArray() {
     return this.data;
 }
@@ -44,8 +43,7 @@ function getGamesList(accountID, sql, rank, apiKey, headerFunction, data, getGDa
 }
 function getDataLoop(jsonList, sql, accId, key, data, request, t, v, callback, loopCounter, rank) {
     var path = "https://na1.api.riotgames.com/lol/match/v3/matches/" + parseInt(jsonList.matches[loopCounter].gameId) + "?forAccountId=" + accId + "&api_key=" + key;
-    var timelinePath = "https://na1.api.riotgames.com/lol/match/v3/timelines/by-match/" + parseInt(jsonList.matches[loopCounter].gameId) + "?api_key=" + key;
-    //console.log(timelinePath);
+    var timelinePath = "https://na1.api.riotgames.com/lol/match/v3/timelines/by-match/" + parseInt(jsonList.matches[loopCounter].gameId) + "&api_key=" + key;
     var itemPath = "https://na1.api.riotgames.com/lol/static-data/v3/items?locale=en_US&tags=into&api_key=" + key;
     //console.log(i);
     setTimeout(function () {
@@ -105,8 +103,6 @@ function dataRequest(data, sqlconnection, jsonList, path, path2, path3, request,
                 data[t + i][11] = player.stats.item5;
                 data[t + i][12] = player.stats.item6;
                 data[t + i][13] = rank;*/
-                console.log(json.gameId);
-                var orderedItems = orderItems(timeline, player, i);
                 insertToColumns[i] = [];
                 insertToColumns[i][0] = json.gameId.toString() + i.toString();
                 // console.log(insertToColumns[t + i][0]);
@@ -116,9 +112,12 @@ function dataRequest(data, sqlconnection, jsonList, path, path2, path3, request,
                 insertToColumns[i][4] = player.timeline.role;
                 insertToColumns[i][5] = player.stats.visionScore;
                 insertToColumns[i][6] = i;
-                for(var itemNumber = 0; itemNumber < 6; itemNumber ++) {
-                    insertToColumns[i][7 + itemNumber] = orderedItems[itemNumber]
-                }
+                insertToColumns[i][7] = player.stats.item0;
+                insertToColumns[i][8] = player.stats.item1;
+                insertToColumns[i][9] = player.stats.item2;
+                insertToColumns[i][10] = player.stats.item3;
+                insertToColumns[i][11] = player.stats.item4;
+                insertToColumns[i][12] = player.stats.item5;
                 insertToColumns[i][13] = player.stats.item6;
                 insertToColumns[i][14] = rank;
                 insertToColumns[i][15] = player.stats.kills;
@@ -208,66 +207,64 @@ function addDataToSQL(data, connection, index, callback) {
     });
 }
 
-function orderItems(timeline, player, id) {
-    var playerItems = [];
-    playerItems[0] = player.stats.item0;
-    playerItems[1] = player.stats.item1;
-    playerItems[2] = player.stats.item2;
-    playerItems[3] = player.stats.item3;
-    playerItems[4] = player.stats.item4;
-    playerItems[5] = player.stats.item5;
-    var playerFinals = [];
-    var orderedFinals = [];
-    //Gets all of the player items that are final items 
-    for(var item in playerItems) {
-        for(var final in endItems) {
-            if(playerItems[item] == endItems[final]) {
-                playerFinals[playerFinals.length] = playerItems[item];
-            }
-        }
+function fullListToCompletedItems(request, fullList, apiKey, index, callback) {
+    var items = [];
+    var finalList = [];
+    for(var i = 0; i < 6; i ++) {
+        items[i] = fullList[index][7 + i];
     }
-    //Fills any remaining slots as 0
-    /*for(var x = playerFinals.length; x < 6; x ++) {
-        playerFinals[x] = 0;
-    }*/
-    //console.log(playerFinals);
-    var frameO, eventO;
-    //console.log(timeline);
-    for(var frame in timeline.frames) {
-        frameO = timeline.frames[frame];
-        //console.log(frameO);
-        for(var event in frameO.events) {
-            try {
-                eventO = frameO.events[event];
-            } catch (TypeError) {
-                continue;
-            }
-            if(eventO.participantId == id + 1) {
-                if(eventO.type == "ITEM_PURCHASED") {
-                    for(var check in playerFinals) {
-                        //console.log(playerFinals[check] + " : " + eventO.itemId);
-                        if(playerFinals[check] == eventO.itemId) {
-                            orderedFinals[orderedFinals.length] = playerFinals[check];
-                        }
-                    }
+    getSummonerCompletedItems(request, items, finalList,apiKey, function(finalList) {
+        for(var x = 0; x < finalList.length; x ++) {
+            fullList[index][7 + x] = finalList[x];
+        }
+        index += 1;
+        if(index == fullList.length) {
+            callback(fullList);
+        }
+        else {
+            fullListToCompletedItems(request, fullList, apiKey, index, callback);
+        }
+    });
+}
+
+function getSummonerCompletedItems(request, items, finalList, apiKey, callback) {
+    var path = "https://na1.api.riotgames.com/lol/static-data/v3/items/3379?locale=en_US&tags=into&tags=specialRecipe&api_key=" + apiKey;
+    request(path, function(error, response, body) {
+        var added = false;
+        var apiItem = JSON.parse(body);
+        const ornnItems = [3371, 3373, 3374, 3379, 3380, 3382, 3383, 3384, 3385,];
+        const exceptionItems = [1054, 1055, 1056, 1083];
+        if(apiItem.into == undefined) {
+            for(var i = 0; i < exceptionItems.length; i ++) {
+                if(apiItem.id == exceptionItems[i]) {
+                    break;
                 }
-                else if(eventO.type == "ITEM_UNDO") {
-                    if(eventO.beforeId == orderedFinals[orderedFinals.length - 1]) {
-                        orderedFinals.splice(orderedFinals.length - 1, 1);
-                    }
+                if(i == exceptionItems.length - 1) {
+                    finalList[finalList.length] = items[finalList.length];
+                    added = true;
+                }
+            }         
+        }
+        else {
+            for(var x = 0; x < ornnItems.length; x++) {
+                if(apiItem.into[0] == ornnItems[x]) {
+                    finalList[finalList.length] = items[finalList.length];
+                    added = true;
                 }
             }
-            
         }
-    }
-    //fills empty item spaces with 0s   
-    for(var x = orderedFinals.length; x < 6; x++) {
-        orderedFinals[x] = 0;
-    } 
-    console.log(orderedFinals);
-
-    return orderedFinals;
-
+        if(added == false) {
+            finalList[finalList.length] = 0;
+            console.log("Cya Item");
+        }
+        if(finalList.length >= 6) {
+            callback(finalList);
+        }
+        else {
+            getSummonerCompletedItems(request, items, finalList, apiKey, callback);
+        }
+        
+    });
 }
 function header(data) {
     //console.log(data);
@@ -302,7 +299,7 @@ function writeToExcel(data, headFunction, accountID) {
     xlsx.writeFile(wb, "data.xlsx");
     //throw("done");
 }
-var starter = function(apiKey, accountID, sqlSize, finalItems) {
+var starter = function(apiKey, accountID, sqlSize) {
     key = apiKey
     https = require('https');
     request = require('request');
@@ -311,7 +308,6 @@ var starter = function(apiKey, accountID, sqlSize, finalItems) {
     host = "https://na1.api.riotgames.com";
     patchTimeStamp = 1501589532000;
     data = [];
-    endItems = finalItems;
     var sqlconnection = sql.createConnection({
         host: 'localhost',
         user: 'AFielding',
@@ -452,5 +448,6 @@ function getSummonerID(accountID, request, apiKey, callback) {
     });
 }
 module.exports = {starter};
+
 
 
