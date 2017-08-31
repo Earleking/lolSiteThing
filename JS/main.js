@@ -1,5 +1,5 @@
 const sleuth = require("./sleuther");
-const riotApiKey = "RGAPI-ce5fcaeb-2538-421d-8771-487653a22274";
+const riotApiKey = "KEYHERE";
 
 //sleuth.starter(riotApiKey, 51233797);
 //id = 66543905
