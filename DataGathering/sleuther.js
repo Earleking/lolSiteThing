@@ -56,7 +56,7 @@ function getDataLoop(jsonList, sql, accId, key, data, request, t, v, callback, l
             v += 1;
             getDataLoop(jsonList, sql, accId, key, data, request, t, v, callback, loopCounter, rank);
         }
-    }, 1700);
+    }, 2500);
 
 }
 function dataRequest(data, sqlconnection, jsonList, path, path2, path3, request, t, v, accId, rank, apiKey, callback) {
@@ -68,10 +68,21 @@ function dataRequest(data, sqlconnection, jsonList, path, path2, path3, request,
             //data[data.length] = [];
             //console.log(data);
             var participantId = 0;
-            const json = JSON.parse(body);
-            const timeline = JSON.parse(body2);
+            var json;
+            try {
+                json = JSON.parse(body);
+            } catch (SyntaxError) {
+                console.log(body);
+                throw "Parsing Error";
+            } 
+            var timeline;
+            try {
+                timeline = JSON.parse(body2);
+            } catch (SyntaxError) {
+                throw "Parsing Error";
+            }
             for(var x = 0; x < 10; x ++){
-                idsToSearch.push(json.participantIdentities[x].player.accountId);
+                idsToSearch.push(json.participantIdentities[x].player.currentAccountId);
                 try{
                     //console.log(parseInt(json.participantIdentities[x].player.accountId));
                     if(parseInt(json.participantIdentities[x].player.accountId) == accId) {
@@ -104,8 +115,8 @@ function dataRequest(data, sqlconnection, jsonList, path, path2, path3, request,
                 data[t + i][10] = player.stats.item4;
                 data[t + i][11] = player.stats.item5;
                 data[t + i][12] = player.stats.item6;
-                data[t + i][13] = rank;*/
-                console.log(json.gameId);
+                //data[t + i][13] = rank;*/
+                //console.log(json.gameId);
                 var orderedItems = orderItems(timeline, player, i);
                 insertToColumns[i] = [];
                 insertToColumns[i][0] = json.gameId.toString() + i.toString();
@@ -264,7 +275,7 @@ function orderItems(timeline, player, id) {
     for(var x = orderedFinals.length; x < 6; x++) {
         orderedFinals[x] = 0;
     } 
-    console.log(orderedFinals);
+    //console.log(orderedFinals);
 
     return orderedFinals;
 
@@ -369,6 +380,8 @@ function getRank(accountID, apiKey, request, callback) {
         var json = JSON.parse(body);
         //console.log(json);
         if(json.id == undefined) {
+            console.log("Url: " + path);
+            console.log(json);
             throw 'Bad Call trying to get Summoner ID'
         }
         path2 = "https://na1.api.riotgames.com/lol/league/v3/leagues/by-summoner/" + json.id + "?api_key=" + apiKey;

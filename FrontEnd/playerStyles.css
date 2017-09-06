@@ -1,0 +1,185 @@
+/* The side navigation menu */
+.sidenav {
+    height: 100%; /* 100% Full-height */
+    width: 0; /* 0 width - change this with JavaScript */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Stay on top */
+    top: 0;
+    left: 0;
+    background-color: #111; /* Black*/
+    overflow-x: hidden; /* Disable horizontal scroll */
+    padding-top: 60px; /* Place content 60px from the top */
+    transition: 0.5s; /* 0.5 second transition effect to slide in the sidenav */
+}
+
+/* The navigation menu links */
+.sidenav a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #818181;
+    display: block;
+    transition: 0.3s
+}
+
+/* When you mouse over the navigation links, change their color */
+.sidenav a:hover, .offcanvas a:focus{
+    color: #f1f1f1;
+}
+
+/* Position and style the close button (top right corner) */
+.sidenav .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+}
+
+/* Style page content - use this if you want to push the page content to the right when you open the side navigation */
+#main {
+    transition: margin-left .5s;
+    padding: 20px;
+}
+
+/* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
+@media screen and (max-height: 450px) {
+    .sidenav {padding-top: 15px;}
+    .sidenav a {font-size: 18px;}
+}
+/* Side nav CSS ends -----------------------------------------------------------------------------------------------------------*/
+
+/* Header CSS Starts ------------------------------------------------------------------------------------------------------------*/
+ul.headerList {
+    list-style-type: none;
+    margin: 0px;
+    padding: 0px;
+    overflow: hidden;
+    background-color: #333;
+}
+
+li.hLi {
+    float: left;
+}
+
+li.hLi a {
+    display: inline-block;
+    color: white;
+    text-align: center;
+    padding: 16px 16px;
+    text-decoration: none;
+}
+
+/* Change the link color to #111 (black) on hover */
+li.hLi a:hover {
+    background-color: #111;
+}
+
+topBox {
+    display: inline-block;
+    padding: 16px 5px;
+    color: white;
+}
+
+/* Header CSS Ends*/
+
+
+/*Games History Start*/
+.historyBox {
+    height: 500px;
+    width: 30%;
+    left: 60%;
+    border: 25px solid blue;
+    display: inline-block;
+    position: absolute;
+}
+.playerBox {
+    display: block;
+    position: relative;
+    height: 125px;
+    border: 10px solid blue;
+}
+.playerList {
+    list-style-type: none;
+    display: inline-block;
+    /*Yes this says its ignored, you need it anyway. Fuck this shit*/
+    float: left;
+}
+.kdaBox {
+    display: inline-block;
+    position: absolute;
+    top: 30%;
+    padding-left: 25px;
+    float: left;
+}
+/*Games History End*/
+
+/*Attribute Description Start*/
+ul.desList {
+    list-style-type: none;
+    position: absolute;
+    color: white;
+    right: 2%;
+    top: 2%;
+}
+
+li.aLi {
+    display: block;
+    padding: 10px 15px;
+    background-color: #333;
+    float: left;
+}
+
+li.aLi:hover {
+    background-color: #111;
+}
+
+li.aLiFirst {
+    display: block;
+    padding: 10px 15px;
+    background-color: #333;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    float: left;
+}
+
+li.aLiFirst:hover {
+    background-color: #111;
+}
+li.aLiLast {
+    display: block;
+    padding: 10px 15px;
+    background-color: #333;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    float: left;
+}
+
+li.aLiLast:hover {
+    background-color: #111;
+}
+/*Attribute Description End*/
+
+/*Attributes Start*/
+div.statsBox {
+    border: 10px solid blue;
+    width: 55%;
+    height: 80%;
+    position: relative;
+}
+div.radarChart {
+    position: absolute;
+    width: 70%;
+    height: 70%;
+    left: 0%;
+    top: 15%;
+}
+div.detailedData {
+    border: 8px solid blue;
+    width: 35%;
+    height: 75%;
+    right: 2%;
+    top: 15%;
+    position: absolute;
+}
+/*Attributes End*/

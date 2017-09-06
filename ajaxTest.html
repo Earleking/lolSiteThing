@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<body>
+<script src="jquery-3.2.1.min.js"></script>
+<script src="require.js">    </script>
+<h1>The XMLHttpRequest Object</h1>
+
+<button type="button" onclick="readText()">Request data</button>
+
+<p>Click the button several to see if the time changes, or if the file is cached.</p>
+
+<p id="demo"></p>
+
+<script>
+
+function readText() {
+    console.log("hello world");
+    const myModule = require(['./returnTest']);
+    let val = myModule.hello();
+    console.log(val);
+        /*var url = "./returnTest.js";
+        var result = "";
+        $.ajax({
+            url: url,
+            type: 'get',
+            dataType: 'text',
+            success: function (data) {
+                //  data = helloWorld();
+                console.log("hello");
+                console.log(data);
+            },
+            async: true
+        });*/
+    }
+</script>
+
+</body>
+</html>

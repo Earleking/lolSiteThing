@@ -1,0 +1,70 @@
+<html>
+    <head>
+        <link rel="styleSheet" href="playerStyles.css">
+        <!-- header code -->
+        <ul class="headerList">
+            <li class="hLi"><a onclick="openNav()">Menu</a></li>
+            <li class="hLi">
+                <topBox>
+                    Region:
+                </topBox>
+                <select>
+                    <option value="NA">NA</option>
+                    <option value="NA">EUW</option>
+                    <option value="NA">EUE</option>
+                    <option value="NA">KR</option>
+                    <option value="NA">JP</option>
+                </select>
+            </li>
+            <li class="hLi"><topBox><input type="text" name="inputField"></topBox></li>
+            <li class="hLi"><a href="">Search</a></li>
+        </ul>
+        <!-- header code end -->
+    </head>
+    <body>
+        <!-- Side Bar Code Start-->
+        <div id="mySidenav" class="sidenav">
+            <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+            <a href="#">About</a>
+            <a href="#">Champions</a>
+            <a href="#">Items</a>
+            <a href="#">Contact</a>
+        </div>
+        <!-- Add all page content inside this div if you want the side nav to push page content to the right (not used if you only want the sidenav to sit on top of the page -->
+        <div id="main">
+        
+        </div>
+        <!-- Side Bar Code End-->
+        
+        <!-- Game History Display Start-->
+        <div class="historyBox" id="historyParent">
+            Ok. Match history will be displayed here
+            
+        </div>
+        <!-- Game History Display End-->
+        <!--Fun buttons start-->
+        
+        <!--Fun buttons End-->
+
+        <!-- Attribute Descriptions Start-->
+        <div class="statsBox" id="radarBox">
+            <div class="radarChart">
+            </div>
+            <ul class="desList">
+                <li class="aLiFirst">Kill Pressure</li>
+                <li class="aLi">Warding</li>
+                <li class="aLi">Survivability</li>
+                <li class="aLi">Objectives</li>
+                <li class="aLiLast">Teamfighting</li>
+            </ul>
+            <div class="detailedData">
+                More detailed data will show here
+            </div>
+        </div>
+        <!-- Attribute Descriptions End-->
+
+    </body>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.6/d3.min.js" charset="utf-8"></script>
+    <script src="radarChart.js"></script>
+    <script type="text/javascript" src="playerPage.js"></script>
+</html>

@@ -1,5 +1,5 @@
 const sleuth = require("./sleuther");
-const riotApiKey = "RGAPI-1c987d0a-b063-4585-91fb-a7cfe3143a36";
+const riotApiKey = "RGAPI-a05ac317-5298-4c4d-bee1-fcc8369d98ce";
 const request = require('request');
 const fs = require('fs');
 //sleuth.starter(riotApiKey, 51233797);
@@ -14,7 +14,7 @@ function finalItemsCall() {
         var json = JSON.parse(data)
         //console.log(json.data['3903']);
         
-        sleuth.starter(riotApiKey, /*Inital AccountID Here*/51233797, /*Number of records to retrive*/10000, getFinalItemsNoCall(json));
+        sleuth.starter(riotApiKey, /*Inital AccountID Here*/47143896, /*Number of records to retrive*/10000, getFinalItemsNoCall(json));
     });
 }
 
@@ -58,7 +58,7 @@ function getFinalItems()  {
     path = 'https://na1.api.riotgames.com/lol/static-data/v3/summoner-spells?locale=en_US&dataById=false&api_key=' + riotApiKey;
     request(path, function(error, response, body) {
         var allItems = JSON.parse(body);
-        console.log(allItems.data.SummonerHaste);
+        //console.log(allItems.data.SummonerHaste);
         allItems = allItems.data;
         var endItems = [];
         const ornnItems = [3371, 3373, 3374, 3379, 3380, 3382, 3383, 3384, 3385,];
