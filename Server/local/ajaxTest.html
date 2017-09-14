@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<body>
+<script src="jquery-3.2.1.min.js"></script>
+<script src="require.js">    </script>
+<h1>The XMLHttpRequest Object</h1>
+
+<button type="button" onclick="readText()">Request data</button>
+
+<p>Click the button several to see if the time changes, or if the file is cached.</p>
+
+<p id="demo"></p>
+<form action = "http://localhost:8081/hello" method="GET">
+    Name: <input type="text" name="summ_name"> <br>
+    <input type="submit" value="submit">
+</form>
+<script>
+
+function readText() {
+    var xmlHttp = new XMLHttpRequest();
+    xmlHttp.open("GET", "http://localhost:8081/hello", false);
+    xmlHttp.send();
+    console.log("res: " + xmlHttp.responseText);
+    console.log("Working1");
+}
+</script>
+
+</body>
+</html>

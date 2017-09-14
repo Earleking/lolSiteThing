@@ -1,27 +1,31 @@
 <html>
     <head>
         <link rel="styleSheet" href="playerStyles.css">
-        <!-- header code -->
+       
+    </head>
+    <body>
+         <!-- header code -->
         <ul class="headerList">
-            <li class="hLi"><a onclick="openNav()">Menu</a></li>
+            <li class="hLi"><a type="button" onclick="openNav()"> Menu </a></li>
+            <form>
             <li class="hLi">
                 <topBox>
                     Region:
                 </topBox>
-                <select>
+                <select name="region">
                     <option value="NA">NA</option>
-                    <option value="NA">EUW</option>
-                    <option value="NA">EUE</option>
-                    <option value="NA">KR</option>
-                    <option value="NA">JP</option>
+                    <option value="EUW">EUW</option>
+                    <option value="EUE">EUE</option>
+                    <option value="KR">KR</option>
+                    <option value="JP">JP</option>
                 </select>
             </li>
-            <li class="hLi"><topBox><input type="text" name="inputField"></topBox></li>
-            <li class="hLi"><a href="">Search</a></li>
+            <li class="hLi"><topBox><input type="text" name="summName"></topBox></li>
+            <li class="hLi"><a><input type="submit" value="Search"></a></li>
+            </form>
+
         </ul>
         <!-- header code end -->
-    </head>
-    <body>
         <!-- Side Bar Code Start-->
         <div id="mySidenav" class="sidenav">
             <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
@@ -51,11 +55,12 @@
             <div class="radarChart">
             </div>
             <ul class="desList">
-                <li class="aLiFirst">Kill Pressure</li>
-                <li class="aLi">Warding</li>
-                <li class="aLi">Survivability</li>
-                <li class="aLi">Objectives</li>
-                <li class="aLiLast">Teamfighting</li>
+                <!-- change the onclick once shit actually happens -->
+                <a onclick="print()"><li class="aLiFirst">Kill Pressure</li></a>
+                <a onclick="print()"><li class="aLi">Warding</li></a>
+                <a onclick="print()"><li class="aLi">Survivability</li></a>
+                <a onclick="print()"><li class="aLi">Objectives</li></a>
+                <a onclick="print()"><li class="aLiLast">Teamfighting</li></a>
             </ul>
             <div class="detailedData">
                 More detailed data will show here

@@ -98,6 +98,9 @@ function createRadarChart() {
 			RadarChart(".radarChart", data, radarChartOptions);
 }
 
+function print() {
+    console.log("working as intended");
+}
 createRadarChart();
 addGameEntry();
 addGameEntry();
