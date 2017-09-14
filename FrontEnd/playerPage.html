@@ -6,8 +6,8 @@
     <body>
          <!-- header code -->
         <ul class="headerList">
-            <li class="hLi"><a type="button" onclick="openNav()"> Menu </a></li>
-            <form>
+            <li class="hLi"><a onclick="openNav()"> Menu</a></li>
+            <form action="http://localhost:8081/hello" method="get">
             <li class="hLi">
                 <topBox>
                     Region:
@@ -56,14 +56,14 @@
             </div>
             <ul class="desList">
                 <!-- change the onclick once shit actually happens -->
-                <a onclick="print()"><li class="aLiFirst">Kill Pressure</li></a>
-                <a onclick="print()"><li class="aLi">Warding</li></a>
-                <a onclick="print()"><li class="aLi">Survivability</li></a>
-                <a onclick="print()"><li class="aLi">Objectives</li></a>
-                <a onclick="print()"><li class="aLiLast">Teamfighting</li></a>
+                <a id="att1" onclick="print()"><li id="attc1" class="aLiFirst">Kill Pressure</li></a>
+                <a id="att2" onclick="print()"><li id="attc2" class="aLi">Warding</li></a>
+                <a id="att3" onclick="print()"><li id="attc3" class="aLi">Survivability</li></a>
+                <a id="att4" onclick="print()"><li id="attc4" class="aLi">Objectives</li></a>
+                <a id="att5" onclick="print()"><li id="attc5" class="aLiLast">Teamfighting</li></a>
             </ul>
-            <div class="detailedData">
-                More detailed data will show here
+            <div id = "attDetailedData" class="detailedData">
+                Click one of the attribute buttons to learn more.
             </div>
         </div>
         <!-- Attribute Descriptions End-->

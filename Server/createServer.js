@@ -7,22 +7,28 @@ app.use(express.static(path.join(__dirname, '/local')));
 app.use(express.static(path.join(__dirname, "/../FrontEnd")));
 app.get('/', function (req, res) {
     try {
-        //res.sendFile('ajaxTest.html', {'root': '/'}); 
+        //muahahaha, now this is on the defualt page. Finally got it working
+        res.sendFile('Users\\Arek Fielding\\Documents\\Development\\Analysis Site\\FrontEnd\\playerPage.html', {'root': '/'}); 
 
     } catch (error) {
         console.log(error);
     }
-    //console.log(__dirname + '/../testing.html');
-    res.send('Hello World');
-    console.log("hello world");
-   ///console.log(req);
-});
 
+});
+app.get('/request' , function(req, res) {
+    console.log('request received');
+    res.writeHead(200, {"Content-Type": "text/plain"});
+    res.end("This is a response to your request");
+});
 app.get('/hello', function(req, res) {
-    console.log("AYYYYY");
-    res.send("o");
+    //There you go. This grabs region
+    res.send(req.query.region);
 });
 
+app.get('/playerPage', function (req, res) {
+    console.log('hello');
+    console.log(res.getHeader('summName'));
+});
 var server = app.listen(8081, function () {
    var host = server.address().address;
    var port = server.address().port;

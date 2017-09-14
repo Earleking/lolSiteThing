@@ -7,7 +7,19 @@ function openNav() {
 function closeNav() {
     document.getElementById("mySidenav").style.width = "0";
 }
+function attributeButtons() {
+    for(var i = 1; i < 6; i ++) {
+        document.getElementById("att" + i).addEventListener('click', function(event) {
+            attributeButtonsListenerCall(event.target.id[4]);
+            console.log(event.target.id[4]);
+        });
+    }
+}
 
+function attributeButtonsListenerCall(id) {
+    document.getElementById("attDetailedData").innerHTML = "This is now gonna display data from attribute " + id;
+    makeRequest();
+}
 function addGameEntry() {
     var parent = document.getElementById("historyParent");
     
@@ -101,7 +113,28 @@ function createRadarChart() {
 function print() {
     console.log("working as intended");
 }
+
+function makeRequest() {
+    var xmlhttp = new XMLHttpRequest();
+    console.log("sending request");
+
+    xmlhttp.open('GET', "http://localhost:8081/request", true);
+    xmlhttp.onreadystatechange = function() {
+        if (xmlhttp.readyState==4 && xmlhttp.status==200){
+           console.log(xmlhttp.responseText);
+         }
+    }
+
+    xmlhttp.send();
+}
 createRadarChart();
+attributeButtons();
+addGameEntry();
+addGameEntry();
+addGameEntry();
+addGameEntry();
+addGameEntry();
+addGameEntry();
 addGameEntry();
 addGameEntry();
 
