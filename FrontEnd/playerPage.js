@@ -30,10 +30,10 @@ function addGameEntry() {
     var box = document.createElement("div");
     box.setAttribute('class', 'playerBox');
     if(Math.random() * 2 > 1) {
-        box.style.backgroundColor = '#66CC00';
+        box.style.backgroundColor = 'rgba(51, 255, 51, .7)';
     }
     else {
-        box.style.backgroundColor = '#FF5555';
+        box.style.backgroundColor = 'rgba(255, 102, 102, .7)';
     }
     var team1List = document.createElement("ul");
     team1List.setAttribute('class', 'playerList');

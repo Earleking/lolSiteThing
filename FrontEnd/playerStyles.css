@@ -153,6 +153,7 @@ topBox {
 .playerList {
     list-style-type: none;
     display: inline-block;
+    opacity: .99;
     /*Yes this says its ignored, you need it anyway. Fuck this shit*/
     float: left;
 }
