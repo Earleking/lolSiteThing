@@ -1,5 +1,5 @@
 const sleuth = require("./sleuther");
-const riotApiKey = "RGAPI-a05ac317-5298-4c4d-bee1-fcc8369d98ce";
+const riotApiKey = "RGAPI-5bbb1ca0-51a7-4364-9aff-133ab8946957";
 const request = require('request');
 const fs = require('fs');
 //sleuth.starter(riotApiKey, 51233797);
@@ -11,7 +11,7 @@ finalItemsCall();
 function finalItemsCall() {
     fs.readFile('test.json', 'utf8', function(err, data) {
         if(err) throw err;
-        var json = JSON.parse(data)
+        var json = JSON.parse(data);
         //console.log(json.data['3903']);
         
         sleuth.starter(riotApiKey, /*Inital AccountID Here*/47143896, /*Number of records to retrive*/10000, getFinalItemsNoCall(json));

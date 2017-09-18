@@ -1,3 +1,17 @@
+body {
+    background-color: beige;
+}
+
+/*Radar chart stuff*/
+.legend {
+    font-family: 'Raleway', sans-serif;
+    /*This is text color*/
+    fill: #333333;
+}
+
+.tooltip {
+    fill: #333333;
+}
 /* The side navigation menu */
 .sidenav {
     height: 100%; /* 100% Full-height */
@@ -11,7 +25,7 @@
     padding-top: 60px; /* Place content 60px from the top */
     transition: 0.5s; /* 0.5 second transition effect to slide in the sidenav */
 }
-
+        
 /* The navigation menu links */
 .sidenav a {
     padding: 8px 8px 8px 32px;
@@ -119,7 +133,8 @@ topBox {
     height: 500px;
     width: 30%;
     left: 60%;
-    border: 25px solid blue;
+    border: transparent;
+    background-color: transparent;
     display: inline-block;
     position: absolute;
 }
@@ -128,7 +143,12 @@ topBox {
     position: relative;
     height: 125px;
     background-color: lightgray;
-    border: 2px solid black;
+    border: 1px solid black;
+    border-radius: 10px;
+}
+
+.playerBoxAfter {
+    height: 5px;
 }
 .playerList {
     list-style-type: none;
@@ -207,9 +227,11 @@ li.aLiLast:hover {
 /*Attributes Start*/
 div.statsBox {
     border: 10px solid blue;
+    border-radius: 0px;
     width: 55%;
     height: 80%;
     position: relative;
+    background-color: lightgray;
 }
 div.radarChart {
     position: absolute;

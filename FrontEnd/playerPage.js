@@ -18,7 +18,7 @@ function attributeButtons() {
 
 function attributeButtonsListenerCall(id) {
     document.getElementById("attDetailedData").innerHTML = "This is now gonna display data from attribute " + id;
-    makeRequest();
+    //makeRequest();
 }
 function addGameEntry() {
     var parent = document.getElementById("historyParent");
@@ -29,7 +29,12 @@ function addGameEntry() {
     //Player List Start
     var box = document.createElement("div");
     box.setAttribute('class', 'playerBox');
-
+    if(Math.random() * 2 > 1) {
+        box.style.backgroundColor = '#66CC00';
+    }
+    else {
+        box.style.backgroundColor = '#FF5555';
+    }
     var team1List = document.createElement("ul");
     team1List.setAttribute('class', 'playerList');
 
@@ -46,7 +51,6 @@ function addGameEntry() {
         
         var toAppend= document.createElement('li');
         toAppend.appendChild(document.createTextNode("Player " + (x + 6)));
-
         team2List.appendChild(toAppend);
     }
     box.appendChild(team1List);
@@ -57,12 +61,14 @@ function addGameEntry() {
     stats.setAttribute('class', 'kdaBox');
     box.appendChild(stats);
     parent.appendChild(box);
-
+    var spacing = document.createElement("div");
+    spacing.setAttribute('class', 'playerBoxAfter');
+    parent.appendChild(spacing);
     
     //Player List End
 
 
-    document.body.appendChild(document.createElement("button"));
+    //document.body.appendChild(document.createElement("button"));
 
 }
 function createRadarChart() {

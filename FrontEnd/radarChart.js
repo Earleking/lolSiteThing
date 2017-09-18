@@ -110,7 +110,8 @@ function RadarChart(id, data, options) {
 		.attr("y1", 0)
 		.attr("x2", function(d, i){ return rScale(maxValue*1.1) * Math.cos(angleSlice*i - Math.PI/2); })
 		.attr("y2", function(d, i){ return rScale(maxValue*1.1) * Math.sin(angleSlice*i - Math.PI/2); })
-		.attr("class", "line")
+        .attr("class", "line")
+        //This changes divider lines
 		.style("stroke", "white")
 		.style("stroke-width", "2px");
 
