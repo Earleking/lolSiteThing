@@ -1,5 +1,10 @@
 body {
     background-color: beige;
+    background: -webkit-linear-gradient(rgba(71,153,235,1) 0%, rgba(147,203,235,1) 0%, rgba(208,219,231,1) 56%, rgba(255,255,255,1) 93%, rgba(255,255,255,1) 100%);
+    background: -moz-linear-gradient(rgba(71,153,235,1) 0%, rgba(147,203,235,1) 0%, rgba(208,219,231,1) 56%, rgba(255,255,255,1) 93%, rgba(255,255,255,1) 100%);
+    background: -o-linear-gradient(rgba(71,153,235,1) 0%, rgba(147,203,235,1) 0%, rgba(208,219,231,1) 56%, rgba(255,255,255,1) 93%, rgba(255,255,255,1) 100%);
+    background: linear-gradient(rgba(71,153,235,1) 0%, rgba(147,203,235,1) 0%, rgba(208,219,231,1) 56%, rgba(255,255,255,1) 93%, rgba(255,255,255,1) 100%);
+    background-repeat: no-repeat;
 }
 
 /*Radar chart stuff*/
@@ -230,6 +235,7 @@ div.statsBox {
     border: 10px solid blue;
     border-radius: 0px;
     width: 55%;
+    left: 2%;
     height: 80%;
     position: relative;
     background-color: lightgray;
