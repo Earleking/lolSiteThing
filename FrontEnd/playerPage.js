@@ -64,6 +64,7 @@ function addGameEntry() {
     var spacing = document.createElement("div");
     spacing.setAttribute('class', 'playerBoxAfter');
     parent.appendChild(spacing);
+    //Console.log("heelo");
     
     //Player List End
 

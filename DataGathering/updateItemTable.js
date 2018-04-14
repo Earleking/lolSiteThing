@@ -13,10 +13,7 @@ var sqlconnection = sql.createConnection({
     database: 'leaguedb'
 });
 
-sqlconnection.connect(function(err) {
-    if(err) throw err;
-    getItemsOffline(sqlconnection);
-});
+sqlconnection.connect();
 
 function getItems(sqlconnection) {
     request(path, function(error, response, body) {

@@ -1,21 +1,22 @@
 body {
-    background-color: beige;
+    /*background-color: beige;
     background: -webkit-linear-gradient(rgba(71,153,235,1) 0%, rgba(147,203,235,1) 0%, rgba(208,219,231,1) 56%, rgba(255,255,255,1) 93%, rgba(255,255,255,1) 100%);
     background: -moz-linear-gradient(rgba(71,153,235,1) 0%, rgba(147,203,235,1) 0%, rgba(208,219,231,1) 56%, rgba(255,255,255,1) 93%, rgba(255,255,255,1) 100%);
     background: -o-linear-gradient(rgba(71,153,235,1) 0%, rgba(147,203,235,1) 0%, rgba(208,219,231,1) 56%, rgba(255,255,255,1) 93%, rgba(255,255,255,1) 100%);
     background: linear-gradient(rgba(71,153,235,1) 0%, rgba(147,203,235,1) 0%, rgba(208,219,231,1) 56%, rgba(255,255,255,1) 93%, rgba(255,255,255,1) 100%);
-    background-repeat: no-repeat;
+    background-repeat: no-repeat;*/
+    background-color: #333333;
 }
 
 /*Radar chart stuff*/
 .legend {
     font-family: 'Raleway', sans-serif;
     /*This is text color*/
-    fill: #333333;
+    fill: black;
 }
 
 .tooltip {
-    fill: #333333;
+    fill: green;
 }
 /* The side navigation menu */
 .sidenav {
@@ -77,7 +78,7 @@ ul.headerList {
     margin: 0px;
     padding: 0px 0px;
     overflow: hidden;
-    background-color: #333;
+    background-color: green;
 }
 
 li.hLi {
@@ -256,3 +257,23 @@ div.detailedData {
     position: absolute;
 }
 /*Attributes End*/
+
+/*Champion page stuff*/
+div.champBox {
+    border: 2px solid blue;
+    width: 60px;
+    height: 60px;
+    margin: 5px;
+    display: inline-block;
+    overflow: hidden;
+}
+
+div.champBox:hover {
+    cursor: pointer;
+}
+
+div.masterChampBox {
+    width: 50%;
+    left: 10%;
+    position: absolute;
+}

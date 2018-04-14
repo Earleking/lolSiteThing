@@ -9,7 +9,7 @@ app.get('/', function (req, res) {
     try {
         //muahahaha, now this is on the defualt page. Finally got it working
         //res.sendFile('Users\\Arek Fielding\\Documents\\Development\\Analysis Site\\FrontEnd\\playerPage.html', {'root': '/'}); 
-        res.sendFile(path.join(__dirname, "/../FrontEnd/playerPage.html").substr(3), {'root': '/'});
+        res.sendFile(path.join(__dirname, "/../FrontEnd/championPage.html").substr(3), {'root': '/'});
         
     } catch (error) {
         console.log(error);
